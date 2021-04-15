@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": true
   },
   "angularCompilerOptions": {
+    "debug": true,
     "strictInjectionParameters": true,
     "strictTemplates": true,
     "strictInputAccessModifiers": true,

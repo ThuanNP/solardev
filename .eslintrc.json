@@ -17,7 +17,8 @@
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".html"]
   },
   "rules": {
     "@angular-eslint/component-selector": [
@@ -95,7 +96,6 @@
     "radix": "error",
     "spaced-comment": ["warn", "always"],
     "@typescript-eslint/no-empty-function": "off",
-    "@angular-eslint/no-empty-lifecycle-method": "off",
-    "@typescript-eslint/no-empty-function": "off"
+    "@angular-eslint/no-empty-lifecycle-method": "off"
   }
 }

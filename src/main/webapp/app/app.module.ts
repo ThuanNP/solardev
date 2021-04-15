@@ -28,6 +28,7 @@ import { ErrorComponent } from './layouts/error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from 'app/layouts/header/header.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { MultilevelMenuService } from 'ng-material-multilevel-menu';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
     { provide: LOCALE_ID, useValue: 'vi' },
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
+    MultilevelMenuService,
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent, HeaderComponent, SidebarComponent],
   bootstrap: [MainComponent],

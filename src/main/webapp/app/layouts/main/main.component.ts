@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
     });
   }
 
-  sideBarToggler(event: any): void {
+  sideBarToggler($event: any): void {
     this.sideBarOpen = !this.sideBarOpen;
   }
 

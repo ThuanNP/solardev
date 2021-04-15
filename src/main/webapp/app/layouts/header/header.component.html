@@ -1,30 +1,39 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button (click)="toggleSideBar()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon>{{ isNavbarCollapsed ? 'menu' : 'menu_open' }}</mat-icon>
     </button>
-
-    <span> APP LOGO </span>
+    <span>SE SOALR</span>
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
-      <ul fxLayout="row" fxLayoutGap="20px">
+      <ul fxLayout="row" fxLayoutGap="10px">
         <li>
           <button mat-icon-button>
-            <mat-icon>settings</mat-icon>
+            <mat-icon matBadge="10" matBadgeOverlap="true" matBadgeColor="accent"> notifications </mat-icon>
           </button>
         </li>
         <li>
           <button mat-icon-button>
-            <mat-icon>help_outline</mat-icon>
+            <mat-icon>book</mat-icon>
           </button>
         </li>
+        <mat-divider class="style-fix" vertical="true"></mat-divider>
         <li>
           <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>person_outline</mat-icon>
+            <mat-icon>person</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item>
-              <mat-icon>exit_to_app</mat-icon>
+              <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
+              Register
+            </button>
+            <button mat-menu-item>
+              <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
+              Sign in
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>
+              <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
               Sign out
             </button>
           </mat-menu>
