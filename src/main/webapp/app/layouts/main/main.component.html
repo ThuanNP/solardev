@@ -1,13 +1,37 @@
-<jhi-page-ribbon></jhi-page-ribbon>
+<!--<jhi-page-ribbon></jhi-page-ribbon>-->
 
-<div>
-  <router-outlet name="navbar"></router-outlet>
-</div>
+<!--<div>-->
+<!--  <router-outlet name="navbar"></router-outlet>-->
+<!--</div>-->
 
-<div class="container-fluid">
-  <div class="card jh-card">
+<!--<div class="container-fluid">-->
+
+<!--  <form class="example-form mb-2">-->
+<!--    <mat-form-field class="example-form-field">-->
+<!--      <mat-label>Clearable input</mat-label>-->
+<!--      <input matInput type="text" >-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field class="example-full-width">-->
+<!--      <mat-label>Email</mat-label>-->
+<!--      <input matInput placeholder="Ex. pat@example.com">-->
+<!--    </mat-form-field>-->
+<!--    <button mat-raised-button color="primary">Hello jhipster material !</button>-->
+<!--  </form>-->
+
+<!--  <div class="card jh-card">-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </div>-->
+
+<!--  <jhi-footer></jhi-footer>-->
+<!--</div>-->
+<jhi-header (toggleSideBarForMe)="sideBarToggler($event)"></jhi-header>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <jhi-sidebar></jhi-sidebar>
+  </mat-drawer>
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-  </div>
-
-  <jhi-footer></jhi-footer>
-</div>
+  </mat-drawer-content>
+</mat-drawer-container>
+<jhi-footer>Footer</jhi-footer>
