@@ -3,10 +3,10 @@ import { ExpandCollapseStatusEnum, MultilevelMenuService } from 'ng-material-mul
 
 @Component({
   selector: 'jhi-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  templateUrl: './side-menu.component.html',
+  styleUrls: ['./side-menu.component.scss'],
 })
-export class SidebarComponent implements OnInit {
+export class SideMenuComponent implements OnInit {
   config = {
     paddingAtStart: true,
     classname: 'menu-label',

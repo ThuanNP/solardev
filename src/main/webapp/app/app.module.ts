@@ -27,7 +27,7 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ErrorComponent } from './layouts/error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from 'app/layouts/header/header.component';
-import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { SideMenuComponent } from './layouts/side-menu/side-menu.component';
 import { MultilevelMenuService } from 'ng-material-multilevel-menu';
 
 @NgModule({
@@ -52,7 +52,7 @@ import { MultilevelMenuService } from 'ng-material-multilevel-menu';
     httpInterceptorProviders,
     MultilevelMenuService,
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent, HeaderComponent, SidebarComponent],
+  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent, HeaderComponent, SideMenuComponent],
   bootstrap: [MainComponent],
 })
 export class AppModule {
