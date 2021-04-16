@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { VERSION } from 'app/app.constants';
 import { LoginService } from 'app/login/login.service';
 import { AccountService } from 'app/core/auth/account.service';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isNavbarCollapsed = false;
+  @Input('opened') sideBarOpen!: boolean;
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   toggleSideBar(): void {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
     this.toggleSideBarForMe.emit();
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));

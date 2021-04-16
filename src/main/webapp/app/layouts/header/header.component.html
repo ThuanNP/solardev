@@ -1,9 +1,10 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button (click)="toggleSideBar()">
-      <mat-icon>{{ isNavbarCollapsed ? 'menu' : 'menu_open' }}</mat-icon>
+      <!--      <mat-icon>menu</mat-icon>-->
+      <mat-icon>{{ sideBarOpen ? 'menu_open' : 'menu' }}</mat-icon>
     </button>
-    <span>SE SOALR</span>
+    <!--    <span>SE SOALR</span>-->
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="10px">

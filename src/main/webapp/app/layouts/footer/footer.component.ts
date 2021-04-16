@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VERSION } from 'app/app.constants';
+import { BUILD_TIMESTAMP, VERSION } from 'app/app.constants';
 
 @Component({
   selector: 'jhi-footer',
@@ -8,9 +8,13 @@ import { VERSION } from 'app/app.constants';
 })
 export class FooterComponent implements OnInit {
   version = '';
+  build_timestamp = '';
   ngOnInit(): void {
     if (VERSION) {
       this.version = VERSION.toLowerCase().startsWith('v') ? VERSION : 'v' + VERSION;
+    }
+    if (BUILD_TIMESTAMP) {
+      this.build_timestamp = BUILD_TIMESTAMP;
     }
   }
 }

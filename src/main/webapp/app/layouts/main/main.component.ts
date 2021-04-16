@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRouteSnapshot, NavigationEnd, NavigationError } from '@angular/router';
 
 import { AccountService } from 'app/core/auth/account.service';
+import { Observable } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, shareReplay } from 'rxjs/operators';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'jhi-main',
@@ -10,8 +14,17 @@ import { AccountService } from 'app/core/auth/account.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  sideBarOpen = true;
-  constructor(private accountService: AccountService, private titleService: Title, private router: Router) {}
+  @ViewChild('drawer', { static: false }) drawer!: MatSidenav;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private accountService: AccountService,
+    private titleService: Title,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // try to log in automatically
@@ -28,7 +41,7 @@ export class MainComponent implements OnInit {
   }
 
   sideBarToggler($event: any): void {
-    this.sideBarOpen = !this.sideBarOpen;
+    this.drawer.toggle();
   }
 
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot): string {

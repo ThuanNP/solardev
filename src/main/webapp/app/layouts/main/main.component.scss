@@ -1,24 +1,25 @@
-:host {
-  display: flex;
-  flex-direction: column;
+.sidenav-container {
   height: 100%;
 }
-mat-drawer {
-  width: 300px;
+
+.sidenav {
+  min-width: 300px;
 }
 
-mat-drawer-container {
-  height: 100%;
-  min-height: 87vh;
+jhi-sidebar {
+  width: 500px;
 }
 
-mat-drawer-content {
+.jhi-content {
   padding: 20px;
 }
 
-jhi-sidenav {
-  display: flex;
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
-mat-drawer-container {
-  flex: 1 1 auto;
+
+.mat-sidenav .mat-toolbar span {
+  margin: auto;
 }
