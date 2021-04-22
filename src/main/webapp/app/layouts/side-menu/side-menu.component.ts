@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpandCollapseStatusEnum, ExpandedLTR, MultilevelMenuService, MultilevelNodes, SlideInOut } from 'ng-material-multilevel-menu';
+import { ExpandedLTR, MultilevelNodes, SlideInOut } from 'ng-material-multilevel-menu';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
 @Component({
@@ -62,6 +62,23 @@ export class SideMenuComponent implements OnInit {
     {
       label: 'Danh mục',
       icon: 'style',
+      items: [
+        {
+          label: 'Danh mục tỉnh/ Thành phố',
+          icon: 'more_vert',
+          link: 'entities/province',
+        },
+        {
+          label: 'Danh mục Quận/ huyện',
+          icon: 'more_vert',
+          link: 'entities/district',
+        },
+        {
+          label: 'Danh mục Quận/ huyện',
+          icon: 'more_vert',
+          link: 'entities/district',
+        },
+      ],
     },
     {
       label: 'Giao dịch',
