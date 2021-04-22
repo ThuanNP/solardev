@@ -1,0 +1,25 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  min-width: 300px;
+}
+
+jhi-sidebar {
+  width: 500px;
+}
+
+.jhi-content {
+  padding: 20px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-sidenav .mat-toolbar span {
+  margin: auto;
+}

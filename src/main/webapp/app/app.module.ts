@@ -19,12 +19,16 @@ import { EntityRoutingModule } from './entities/entity-routing.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { NgbDateDayjsAdapter } from './config/datepicker-adapter';
 import { fontAwesomeIcons } from './config/font-awesome-icons';
-import { httpInterceptorProviders } from 'app/core/interceptor/index';
+import { httpInterceptorProviders } from 'app/core/interceptor';
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ErrorComponent } from './layouts/error/error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from 'app/layouts/header/header.component';
+import { SideMenuComponent } from './layouts/side-menu/side-menu.component';
+import { MultilevelMenuService } from 'ng-material-multilevel-menu';
 
 @NgModule({
   imports: [
@@ -38,6 +42,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     HttpClientModule,
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-', caseSensitive: true }),
+    BrowserAnimationsModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
@@ -45,8 +50,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     { provide: LOCALE_ID, useValue: 'vi' },
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
+    MultilevelMenuService,
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
+  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent, HeaderComponent, SideMenuComponent],
   bootstrap: [MainComponent],
 })
 export class AppModule {

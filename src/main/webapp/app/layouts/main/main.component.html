@@ -1,13 +1,30 @@
-<jhi-page-ribbon></jhi-page-ribbon>
-
-<div>
-  <router-outlet name="navbar"></router-outlet>
-</div>
-
-<div class="container-fluid">
-  <div class="card jh-card">
-    <router-outlet></router-outlet>
-  </div>
-
-  <jhi-footer></jhi-footer>
-</div>
+<!--<jhi-header (toggleSideBarForMe)="sideBarToggler($event)"></jhi-header>-->
+<!--<mat-drawer-container autosize>-->
+<!--  <mat-drawer mode="side" [opened]="sideBarOpen">-->
+<!--    <jhi-sidebar></jhi-sidebar>-->
+<!--  </mat-drawer>-->
+<!--  <mat-drawer-content>-->
+<!--    <router-outlet></router-outlet>-->
+<!--  </mat-drawer-content>-->
+<!--</mat-drawer-container>-->
+<!--<jhi-footer>Footer</jhi-footer>-->
+<mat-sidenav-container class="sidenav-container" autosize fullscreen>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  >
+    <mat-toolbar color="primary"><span>SE SOALR</span></mat-toolbar>
+    <jhi-sidebar></jhi-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column" fxFlexFill>
+    <jhi-header [opened]="drawer.opened" (toggleSideBarForMe)="sideBarToggler($event)"></jhi-header>
+    <!-- Add Content Here -->
+    <div class="jhi-content" fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+    <jhi-footer>Footer</jhi-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

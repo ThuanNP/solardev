@@ -12,6 +12,7 @@
     <link rel="manifest" href="manifest.webapp" />
     <link rel="stylesheet" href="content/css/loading.css" />
     <!-- jhipster-needle-add-resources-to-root - JHipster will add new resources here -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
   <body>
     <!--[if lt IE 9]>
@@ -108,7 +109,7 @@
         setTimeout(showError, 4000);
       };
       function showError() {
-        var errorElm = document.getElementById('jhipster-error');
+        let errorElm = document.getElementById('jhipster-error');
         if (errorElm && errorElm.style) {
           errorElm.style.display = 'block';
         }
