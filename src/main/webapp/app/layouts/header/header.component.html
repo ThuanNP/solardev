@@ -6,7 +6,7 @@
     </button>
     <!--    <span>SE SOALR</span>-->
 
-    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" [ngSwitch]="isAuthenticated()">
       <ul fxLayout="row" fxLayoutGap="10px">
         <li>
           <button mat-icon-button>
@@ -23,17 +23,17 @@
           <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>person</mat-icon>
           </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+          <mat-menu #menu="matMenu" flexfixed>
+            <button mat-menu-item routerLink="account/register" *ngSwitchCase="false">
               <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
               Register
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="login()" *ngSwitchCase="true">
               <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
               Sign in
             </button>
             <mat-divider></mat-divider>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="logout()" *ngSwitchCase="true">
               <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
               Sign out
             </button>

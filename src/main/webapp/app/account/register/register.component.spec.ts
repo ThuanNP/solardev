@@ -57,7 +57,7 @@ describe('Component Tests', () => {
           email: '',
           password: 'password',
           login: '',
-          langKey: 'vi',
+          langKey: 'en',
         });
         expect(comp.success).toBe(true);
         expect(comp.errorUserExists).toBe(false);

@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpandCollapseStatusEnum, MultilevelMenuService } from 'ng-material-multilevel-menu';
+import { ExpandCollapseStatusEnum, ExpandedLTR, MultilevelMenuService, MultilevelNodes, SlideInOut } from 'ng-material-multilevel-menu';
+import { ProfileService } from 'app/layouts/profiles/profile.service';
 
 @Component({
   selector: 'jhi-sidebar',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss'],
+  animations: [SlideInOut, ExpandedLTR],
 })
 export class SideMenuComponent implements OnInit {
+  inProduction?: boolean;
+  openAPIEnabled?: boolean;
   config = {
     paddingAtStart: true,
     classname: 'menu-label',
@@ -16,7 +20,8 @@ export class SideMenuComponent implements OnInit {
     useDividers: true,
     rtlLayout: false,
   };
-  appItems = [
+
+  adminNavItems: MultilevelNodes[] = [
     {
       label: 'Hệ thống',
       icon: 'settings',
@@ -76,12 +81,13 @@ export class SideMenuComponent implements OnInit {
     },
   ];
 
-  constructor(private multilevelMenuService: MultilevelMenuService) {}
+  constructor(private profileService: ProfileService) {}
 
-  ngOnInit(): void {}
-
-  setExpandCollapseStatus(type: ExpandCollapseStatusEnum): void {
-    this.multilevelMenuService.setMenuExapandCollpaseStatus(type);
+  ngOnInit(): void {
+    this.profileService.getProfileInfo().subscribe(profileInfo => {
+      this.inProduction = profileInfo.inProduction;
+      this.openAPIEnabled = profileInfo.openAPIEnabled;
+    });
   }
 
   selectedItem($event: any): void {}

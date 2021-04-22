@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   @Input('opened') sideBarOpen!: boolean;
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
+  inProduction?: boolean;
+  openAPIEnabled?: boolean;
+
   constructor(
     private loginService: LoginService,
     private accountService: AccountService,
@@ -21,7 +24,12 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.profileService.getProfileInfo().subscribe(profileInfo => {
+      this.inProduction = profileInfo.inProduction;
+      this.openAPIEnabled = profileInfo.openAPIEnabled;
+    });
+  }
 
   toggleSideBar(): void {
     this.toggleSideBarForMe.emit();
@@ -40,5 +48,10 @@ export class HeaderComponent implements OnInit {
 
   login(): void {
     this.router.navigate(['/login']);
+  }
+
+  logout(): void {
+    this.loginService.logout();
+    this.router.navigate(['']);
   }
 }

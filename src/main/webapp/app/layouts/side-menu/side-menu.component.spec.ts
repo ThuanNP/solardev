@@ -1,24 +1,54 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SideMenuComponent } from 'app/layouts/side-menu/side-menu.component';
 
-import { SideMenuComponent } from './side-menu.component';
+jest.mock('@angular/router');
+jest.mock('app/core/auth/account.service');
+jest.mock('app/login/login.service');
 
-describe('SidebarComponent', () => {
-  let component: SideMenuComponent;
-  let fixture: ComponentFixture<SideMenuComponent>;
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [SideMenuComponent],
-    }).compileComponents();
-  });
+import { ProfileInfo } from 'app/layouts/profiles/profile-info.model';
+import { AccountService } from 'app/core/auth/account.service';
+import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { LoginService } from 'app/login/login.service';
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SideMenuComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+describe('Component Tests', () => {
+  describe('Side menu Component', () => {
+    let comp: SideMenuComponent;
+    let fixture: ComponentFixture<SideMenuComponent>;
+    let mockAccountService: AccountService;
+    let profileService: ProfileService;
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    beforeEach(
+      waitForAsync(() => {
+        TestBed.configureTestingModule({
+          imports: [HttpClientTestingModule],
+          declarations: [SideMenuComponent],
+          providers: [AccountService, Router, LoginService],
+        })
+          .overrideTemplate(SideMenuComponent, '')
+          .compileComponents();
+      })
+    );
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(SideMenuComponent);
+      comp = fixture.componentInstance;
+      mockAccountService = TestBed.inject(AccountService);
+      profileService = TestBed.inject(ProfileService);
+    });
+
+    it('Should call profileService.getProfileInfo on init', () => {
+      // GIVEN
+      spyOn(profileService, 'getProfileInfo').and.returnValue(of(new ProfileInfo()));
+
+      // WHEN
+      comp.ngOnInit();
+
+      // THEN
+      expect(profileService.getProfileInfo).toHaveBeenCalled();
+    });
   });
 });
